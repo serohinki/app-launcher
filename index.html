@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Link Launcher</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: #f4f4f9;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .hint {
+        font-size: 0.8em;
+        color: #666;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h3>Відкрити додаток</h3>
+      <input
+        type="text"
+        id="linkInput"
+        placeholder="Вставте посилання (напр. tg://resolve?domain=telegram)"
+      />
+      <button onclick="launchApp()">Відкрити посилання</button>
+
+      <div class="hint">
+        <b>Приклади:</b><br />
+        • Telegram: <code>tg://resolve?domain=username</code><br />
+        • Instagram: <code>instagram://user?username=apple</code><br />
+        • WhatsApp: <code>whatsapp://send?phone=12345</code>
+      </div>
+    </div>
+
+    <script>
+      function launchApp() {
+        const url = document.getElementById("linkInput").value;
+        if (url) {
+          window.location.href = url;
+        } else {
+          alert("Будь ласка, введіть посилання");
+        }
+      }
+    </script>
+  </body>
+</html>
